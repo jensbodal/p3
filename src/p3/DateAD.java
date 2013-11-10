@@ -79,8 +79,7 @@ public class DateAD {
         else {
             inputDayOfYear += 1;
         }
-        System.out.println(inputDayOfYear);
-        System.out.println(isLeapYear(inputYear));
+
         return dateFromDayOfYear(inputDayOfYear, inputYear);
     }
     
@@ -154,7 +153,7 @@ public class DateAD {
     private void setDayOfMonth(short dayOfMonth) {
         isLeapYear = isLeapYear(this.year);
         if (isLeapYear) {
-            MONTHNAMES.FEBRUARY.month_NumberOfDays += 1;
+            MONTHNAMES.FEBRUARY.month_NumberOfDays = 29;
             daysInYear += 1;
         }
         
