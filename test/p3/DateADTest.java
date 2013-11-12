@@ -63,19 +63,7 @@ public class DateADTest {
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of dateFromDayOfYear method, of class DateAD.
-     */
-    @Test
-    public void testDateFromDayOfYear() {
-        System.out.println("dateFromDayOfYear");
-        short dayOfYear = (short)1;
-        short year = (short)2000;
-        DateAD instance = new DateAD();
-        DateAD expResult = new DateAD(dayOfYear, (short)1, year);
-        DateAD result = instance.dateFromDayOfYear(dayOfYear, year);
-        assertEquals(expResult.toString(), result.toString());
-    }
+
 
     /**
      * Test of getTomorrow method, of class DateAD.
@@ -240,8 +228,20 @@ public class DateADTest {
         DateAD instance = new DateAD();
         String expResult = "today";
         String result = instance.compare(inputDate);
-        System.out.println(expResult);
-        System.out.println(result);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of dateFromDayOfYear method, of class DateAD.
+     */
+    @Test
+    public void testDateFromDayOfYear() {
+        System.out.println("dateFromDayOfYear");
+        short dayOfYear = 60;
+        short year = 2000;
+        DateAD instance = new DateAD();
+        DateAD expResult = new DateAD((short)29, (short)2, (short)2000);
+        DateAD result = instance.dateFromDayOfYear(dayOfYear, year);
         assertEquals(expResult, result);
     }
 }
