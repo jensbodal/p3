@@ -15,10 +15,6 @@ public class DateDriver {
         DateAD currentDate = new DateAD();
         today = new DateAD(); //today.DateAD();
         
-        if (args.length == 0) {
-            currentDate = new DateAD();
-        }
-        
         if (args.length == 1) {
             currentDate = new DateAD(
                     Short.parseShort(args[0]));    
