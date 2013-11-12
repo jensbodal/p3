@@ -98,39 +98,23 @@ public class DateAD {
         }
     } 
 
+
     /**
      * Compares DateAD object to given DateAD object and returns true if both
      * are the same date
      * @param inputDate DateAD object for input
      * @return true if both dates refer to the exact same date
      */
-    public boolean equals(DateAD inputDate) {
-        if (this.year == inputDate.year && 
-                this.dayOfYear == inputDate.dayOfYear) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    } 
-    
-    
-    /**
-     * Please ignore this code for the scope of this project.  I wanted to 
-     * implement JUnit tests and was reading up on Hashcodes and overriding
-     * the equals method.  I did not fully test if my Override works completely
-     * @param other Input object for comparison
-     * @return true if both objects are equal to each other 
-     */
     @Override
     public boolean equals(Object other) {
-        System.out.println(getClass());
         if (other == null) return false;
         if (other == this) return true;
         if (getClass() != other.getClass()) {
             return false;
         }
-        else {return equals((DateAD)other);}
+        DateAD inputDate = (DateAD) other;
+        return (this.year == inputDate.year && 
+                this.dayOfYear == inputDate.dayOfYear);
     } 
 
     /**
