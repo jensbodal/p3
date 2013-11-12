@@ -37,7 +37,13 @@ public class DateAD {
 
     //returns a true if this day is the same day as the DateAD passed in as an argument; false otherwise.
     public boolean equals(DateAD inputDate) {
-        return false;
+        if (this.year == inputDate.year && 
+                this.dayOfYear == inputDate.dayOfYear) {
+                return true;
+        }
+        else {
+            return false;
+        }
     } 
     
     public DateAD dateFromDayOfYear(short dayOfYear, short year){

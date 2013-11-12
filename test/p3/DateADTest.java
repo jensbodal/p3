@@ -58,12 +58,11 @@ public class DateADTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        DateAD inputDate = null;
-        DateAD instance = new DateAD();
-        boolean expResult = false;
+        DateAD inputDate = new DateAD((short)28, (short)1, (short)1891);
+        DateAD instance = new DateAD((short)28, (short)1, (short)1891);
+        boolean expResult = true;
         boolean result = instance.equals(inputDate);
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
 
     /**
