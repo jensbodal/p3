@@ -186,9 +186,11 @@ public class DateAD {
      */
     public DateAD(short dayOfMonth, short month, short year) {
         setCurrentDate();
-        setMonth(month);
-        setYear(year);
-        setDayOfMonth(dayOfMonth);
+        if (year > MIN_YEAR) {
+            setYear(year);
+            setMonth(month);
+            setDayOfMonth(dayOfMonth);            
+        }
     }
     
     /**
@@ -200,7 +202,7 @@ public class DateAD {
      */
     public DateAD(short dayOfYear, short year, boolean isDateFromYear){
         setCurrentDate();
-        if (isDateFromYear) {
+        if (isDateFromYear && year > MIN_YEAR) {
             if (isLeapYear(year)) {
                 MONTHNAMES.FEBRUARY.month_NumberOfDays = 29;
             }
@@ -352,7 +354,6 @@ public class DateAD {
     private void setYear(short year){
         if (year < MIN_YEAR) {
             year = this.year;
-            dayOfYear = this.dayOfYear;
         }
         this.year = year;
     }
