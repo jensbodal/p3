@@ -215,7 +215,11 @@ public class DateAD {
                     newMonth = 12;
                 }
             }
-
+            if (year < MIN_YEAR) {
+                year = this.year;
+                newMonth = this.month;
+                dayOfYear = this.dayOfMonth;
+            }
             else {
                 for (MONTHNAMES M : MONTHNAMES.values()) {
                     if (dayOfYear - M.month_NumberOfDays <= 0) {
@@ -347,11 +351,9 @@ public class DateAD {
     
     private void setYear(short year){
         if (year < MIN_YEAR) {
-            System.out.printf("Year cannot be before %d%n" + 
-                    "Setting Year to Current Year%n", MIN_YEAR);
-            setCurrentDate();
+            year = this.year;
+            dayOfYear = this.dayOfYear;
         }
-
         this.year = year;
     }
 
