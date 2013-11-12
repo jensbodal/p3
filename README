@@ -1,1 +1,1 @@
-This is a project.
+The Equals method is overloaded and overridden to get the JUnit tests working, however I don't completely understand the generated hashcode.
