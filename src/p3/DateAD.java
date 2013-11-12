@@ -23,9 +23,10 @@ import java.util.*;
  * </ol>
  * <br />
  * <i><b>Note</b></i><br />
- * You can also construct a DateAD object by calling dateFromDayOfYear.  This
- * takes in the day of the year and the year and returns a date if input is 
- * valid; it sets the date to the current date otherwise.
+ * You can also construct a DateAD object by calling passing having the 3rd
+ * parameter be a boolean "true".  This takes in the day of the year 
+ * and the year and returns a date if input is valid.
+ * It sets the date to the current date otherwise.
  * 
  * @author Jens Bodal
  * @version 1.0
@@ -146,43 +147,6 @@ public class DateAD {
     }
     
     /**
-     * Method to return a DateAD object from a given day of the year and
-     * year.
-     * @param dayOfYear short number for day in year
-     * @param year short number for year
-     * @return DateAD object based on day of year and year; returns the 
-     * current date if input is invalid
-     */
-    public DateAD dateFromDayOfYear(short dayOfYear, short year){
-        short newMonth = 0;
-        if (dayOfYear > 366 || dayOfYear < 1) {return new DateAD();}
-        
-        if (dayOfYear == 366 && isLeapYear(year)) {
-            if (isLeapYear(year)) {
-                dayOfYear = 31;
-                newMonth = 12;
-            }
-            else {
-                return new DateAD();
-            }
-        }
-
-        else {
-            //Start look up code
-            for (MONTHNAMES M : MONTHNAMES.values()) {
-                if (dayOfYear - M.month_NumberOfDays <= 0) {
-                    newMonth = (short)(M.month_Number + 1);
-                    break;
-                }
-                else {
-                    dayOfYear -= M.month_NumberOfDays;
-                }
-            }
-        }
-        return new DateAD(dayOfYear, newMonth, year);
-    }
-    
-    /**
      * Default constructor which returns the current date if no input is given
      */
     public DateAD() {
@@ -226,6 +190,48 @@ public class DateAD {
         setYear(year);
         setDayOfMonth(dayOfMonth);
     }
+    
+    /**
+     * Constructor to return a DateAD object from a given day of the year and
+     * year.
+     * @param dayOfYear short number for day in year
+     * @param year short number for year
+     * @param isDateFromYear must be true to use this constructor
+     */
+    public DateAD(short dayOfYear, short year, boolean isDateFromYear){
+        setCurrentDate();
+        if (isDateFromYear) {
+            if (isLeapYear(year)) {
+                MONTHNAMES.FEBRUARY.month_NumberOfDays = 29;
+            }
+            else {
+                MONTHNAMES.FEBRUARY.month_NumberOfDays = 28;
+            }
+            short newMonth = 0;
+
+            if (dayOfYear == 366 && isLeapYear(year)) {
+                if (isLeapYear(year)) {
+                    dayOfYear = 31;
+                    newMonth = 12;
+                }
+            }
+
+            else {
+                for (MONTHNAMES M : MONTHNAMES.values()) {
+                    if (dayOfYear - M.month_NumberOfDays <= 0) {
+                        newMonth = (short)(M.month_Number + 1);
+                        break;
+                    }
+                    else {
+                        dayOfYear -= M.month_NumberOfDays;
+                    }
+                }
+            }
+            setYear(year);
+            setMonth(newMonth);
+            setDayOfMonth(dayOfYear);
+        }
+    }
 
     /**
      * Returns the date after the input DateAD object
@@ -244,7 +250,7 @@ public class DateAD {
             inputDayOfYear += 1;
         }
 
-        return dateFromDayOfYear(inputDayOfYear, inputYear);
+        return new DateAD(inputDayOfYear, inputYear, true);
     }
     
     /**
@@ -269,7 +275,7 @@ public class DateAD {
             inputDayOfYear -= 1;
         }
         
-        return dateFromDayOfYear(inputDayOfYear, inputYear);
+        return new DateAD(inputDayOfYear, inputYear, true);
     }
     
     /**
@@ -316,7 +322,7 @@ public class DateAD {
         isLeapYear = isLeapYear(this.year);
         if (isLeapYear) {
             MONTHNAMES.FEBRUARY.month_NumberOfDays = 29;
-            daysInYear += 1;
+            this.daysInYear += 1;
         }
         
         if (dayOfMonth > 0 && dayOfMonth <= daysInMonth(month)) {
