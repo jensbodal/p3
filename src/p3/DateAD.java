@@ -53,10 +53,10 @@ public class DateAD {
     private short month;
     private short year;
     private short dayOfMonth;
-    private short dayOfYear; //Need to implement Zeller's, also need to implement as assigned by class
+    private short dayOfYear; 
     private short dayOfWeek_Number; //0 = Sunday
     private String dayOfWeek_Literal; //Sunday, Monday, etc.
-    private String month_Literal;
+    private String month_Literal; //January, February, etc.
     private short daysInYear = 365;
     private boolean isLeapYear;
     
@@ -79,8 +79,6 @@ public class DateAD {
         }
     }
 
-    //-- returns a true if this day comes before the DateAD passed in as an argument; false otherwise.
-    
     /**
      *
      * @param inputDate DateAD object for input
@@ -99,8 +97,6 @@ public class DateAD {
         }
     } 
 
-    //returns a true if this day is the same day as the DateAD passed in as an argument; false otherwise.
-    //returns a true if this day is the same day as the DateAD passed in as an argument; false otherwise.
     /**
      * Compares DateAD object to given DateAD object and returns true if both
      * are the same date
@@ -393,8 +389,7 @@ public class DateAD {
     private String setDayOfWeek(
             short dayOfMonth, short month, short year) {
         
-        //Ignore warning, it's wrong.
-        short monthValue = 0;
+        short monthValue;
        
         //Calculate monthValue
         switch (month) {
@@ -419,11 +414,6 @@ public class DateAD {
         // h
         short numericalDayOfWeek = (short)
               ((dayCalc + monthCalc + twoDigitYearCalc + centuryCalc - 1) % 7);
-
-        /** For Debugging
-        System.out.printf("Q: %d%n M: %d%n K: %d%n C: %d%n",
-                dayCalc, monthCalc, twoDigitYearCalc, centuryCalc);
-        **/
 
         switch (numericalDayOfWeek) {
             case 0:
