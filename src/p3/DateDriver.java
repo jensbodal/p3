@@ -21,7 +21,14 @@ package p3;
 public class DateDriver {
 
     /**
-     * @param args the command line arguments
+     * Date Driver class essentially tests the DateAD class.  The main method
+     * calls for user input and returns the following information: <br />
+     * <ul>
+     * <li></li>
+     * </ul>
+     * 
+     * @param args takes in 1, 2, or 3 arguments as day; day, month; 
+     * day, month, year; e.g. 2 1 2000 == January 1, 2000
      */
     public static void main(String[] args) {
         DateAD today = new DateAD();
