@@ -171,9 +171,11 @@ public class DateAD {
      * @param month short number representing the month (1 = January)
      */
     public DateAD(short dayOfMonth, short month) {
-        setCurrentDate();
-        setMonth(month);
-        setDayOfMonth(dayOfMonth);
+        if (month > 0 && month <= MONTHS_YEAR) {
+            setCurrentDate();
+            setMonth(month);
+            setDayOfMonth(dayOfMonth);
+        }
     }
 
     /**
@@ -186,7 +188,7 @@ public class DateAD {
      */
     public DateAD(short dayOfMonth, short month, short year) {
         setCurrentDate();
-        if (year > MIN_YEAR) {
+        if (year > MIN_YEAR && (month > 0 && month <= MONTHS_YEAR)) {
             setYear(year);
             setMonth(month);
             setDayOfMonth(dayOfMonth);            
