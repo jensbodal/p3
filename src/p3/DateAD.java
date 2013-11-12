@@ -188,7 +188,7 @@ public class DateAD {
      */
     public DateAD(short dayOfMonth, short month, short year) {
         setCurrentDate();
-        if (year > MIN_YEAR && (month > 0 && month <= MONTHS_YEAR)) {
+        if (year >= MIN_YEAR && (month > 0 && month <= MONTHS_YEAR)) {
             setYear(year);
             setMonth(month);
             setDayOfMonth(dayOfMonth);            
@@ -204,7 +204,7 @@ public class DateAD {
      */
     public DateAD(short dayOfYear, short year, boolean isDateFromYear){
         setCurrentDate();
-        if (isDateFromYear && year > MIN_YEAR) {
+        if (isDateFromYear && year >= MIN_YEAR) {
             if (isLeapYear(year)) {
                 MONTHNAMES.FEBRUARY.month_NumberOfDays = 29;
             }
