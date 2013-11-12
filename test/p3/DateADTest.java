@@ -1,6 +1,5 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * THIS CODE IS NOT PART OF MY PROJECT SUBMISSION
  */
 
 package p3;
@@ -18,21 +17,36 @@ import static org.junit.Assert.*;
  */
 public class DateADTest {
     
+    /**
+     *
+     */
     public DateADTest() {
     }
     
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -211,6 +225,9 @@ public class DateADTest {
         assertEquals(expResult, result);
     }
     
+    /**
+     *
+     */
     @Test
     public void testCompare2() {
         System.out.println("compare");
@@ -221,6 +238,9 @@ public class DateADTest {
         assertEquals(expResult, result);
     }
     
+    /**
+     *
+     */
     @Test
     public void testCompare3() {
         System.out.println("compare");
