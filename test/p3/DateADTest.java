@@ -43,13 +43,11 @@ public class DateADTest {
     @Test
     public void testLessThan() {
         System.out.println("lessThan");
-        DateAD inputDate = null;
-        DateAD instance = new DateAD();
-        boolean expResult = false;
+        DateAD inputDate = new DateAD((short)1, (short)1, (short)1992);
+        DateAD instance = new DateAD((short)31, (short)12, (short)1991);
+        boolean expResult = true;
         boolean result = instance.lessThan(inputDate);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -113,6 +111,19 @@ public class DateADTest {
         System.out.println("getDayOfMonth");
         DateAD instance = new DateAD((short)30);
         short expResult = (short)30;
+        short result = instance.getDayOfMonth();
+        assertEquals(expResult, result);
+    }
+    
+     /**
+     * Test of getDayOfMonth method, of class DateAD.
+     */
+    @Test
+    public void testGetDayOfMonth2() {
+        System.out.println("getDayOfMonth");
+        DateAD instance = new DateAD((short)29, (short)2, (short)2001);
+        DateAD today = new DateAD();
+        short expResult = (short)29;
         short result = instance.getDayOfMonth();
         assertEquals(expResult, result);
     }
@@ -198,4 +209,40 @@ public class DateADTest {
         String result = instance.toString();
         assertEquals(expResult, result);
     }
+
+    /**
+     * Test of compare method, of class DateAD.
+     */
+    @Test
+    public void testCompare() {
+        System.out.println("compare");
+        DateAD inputDate = new DateAD((short)31, (short)12, (short)1999);
+        DateAD instance = new DateAD();
+        String expResult = "in the future";
+        String result = instance.compare(inputDate);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testCompare2() {
+        System.out.println("compare");
+        DateAD inputDate = new DateAD((short)1, (short)1, (short)2000);
+        DateAD instance = new DateAD((short)31, (short)12, (short)1999);
+        String expResult = "in the past";
+        String result = instance.compare(inputDate);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testCompare3() {
+        System.out.println("compare");
+        DateAD inputDate = new DateAD((short)29, (short)2, (short)2001);
+        DateAD instance = new DateAD();
+        String expResult = "today";
+        String result = instance.compare(inputDate);
+        System.out.println(expResult);
+        System.out.println(result);
+        assertEquals(expResult, result);
+    }
 }
+

@@ -27,19 +27,38 @@ public class DateAD {
     private boolean isLeapYear;
     
     
-    //private static short countLeaps -- takes in a year and returns the number of leap years from the base year to it.  ??????
+    public String compare(DateAD inputDate) {
+        if (this.equals(inputDate)) {
+            return "today";
+        }
+        else if (this.lessThan(inputDate)) {
+            return "in the past";
+        }
+        else {
+            return "in the future";
+        }
+    }
 
     //-- returns a true if this day comes before the DateAD passed in as an argument; false otherwise.
     
     public boolean lessThan(DateAD inputDate) {
-        return false;
+        if (this.year == inputDate.year &&
+                this.dayOfYear < inputDate.dayOfYear) {
+            return true;
+        }
+        else if (this.year < inputDate.year) {
+            return true;
+        }
+        else {
+            return false;
+        }
     } 
 
     //returns a true if this day is the same day as the DateAD passed in as an argument; false otherwise.
     public boolean equals(DateAD inputDate) {
         if (this.year == inputDate.year && 
                 this.dayOfYear == inputDate.dayOfYear) {
-                return true;
+            return true;
         }
         else {
             return false;
