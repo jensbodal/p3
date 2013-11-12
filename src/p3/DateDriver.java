@@ -24,11 +24,18 @@ public class DateDriver {
      * Date Driver class essentially tests the DateAD class.  The main method
      * calls for user input and returns the following information: <br />
      * <ul>
-     * <li></li>
+     * <li>Either the current date or if valid the date specified by
+     * the command line arguments (now known as {@code currentDate})</li>
+     * <li>The day before {@code currentDate}</li>
+     * <li>The day after {@code currentDate}</li>
+     * <li>Today's date</li>
+     * <li>Determines whether the {@code currentDate} is in the past, present
+     * or future, compared to today's date</li>
      * </ul>
      * 
-     * @param args takes in 1, 2, or 3 arguments as day; day, month; 
-     * day, month, year; e.g. 2 1 2000 == January 1, 2000
+     * @param args takes in 1, 2, or 3 arguments as {@code day}; 
+     * {@code day, month}; {@code day, month, year};
+     * e.g. 2 1 2000 == January 1, 2000
      */
     public static void main(String[] args) {
         DateAD today = new DateAD();
