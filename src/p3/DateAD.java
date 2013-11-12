@@ -55,6 +55,7 @@ public class DateAD {
     } 
 
     //returns a true if this day is the same day as the DateAD passed in as an argument; false otherwise.
+    //returns a true if this day is the same day as the DateAD passed in as an argument; false otherwise.
     public boolean equals(DateAD inputDate) {
         if (this.year == inputDate.year && 
                 this.dayOfYear == inputDate.dayOfYear) {
@@ -64,6 +65,26 @@ public class DateAD {
             return false;
         }
     } 
+    
+    
+    @Override
+    public boolean equals(Object other) {
+        System.out.println(getClass());
+        if (other == null) return false;
+        if (other == this) return true;
+        if (getClass() != other.getClass()) {
+            return false;
+        }
+        else {return equals((DateAD)other);}
+    } 
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + this.year;
+        hash = 89 * hash + this.dayOfYear;
+        return hash;
+    }
     
     public DateAD dateFromDayOfYear(short dayOfYear, short year){
         short newMonth = 0;
