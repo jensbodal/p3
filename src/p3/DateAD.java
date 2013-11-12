@@ -155,6 +155,7 @@ public class DateAD {
      */
     public DateAD dateFromDayOfYear(short dayOfYear, short year){
         short newMonth = 0;
+
         if (dayOfYear > 366 || dayOfYear < 1) {return new DateAD();}
         
         if (dayOfYear == 366 && isLeapYear(year)) {
@@ -166,10 +167,15 @@ public class DateAD {
                 return new DateAD();
             }
         }
-
+        
         else {
             //Start look up code
             for (MONTHNAMES M : MONTHNAMES.values()) {
+                if (M.month_Number == 1 && (!isLeapYear(year))) {
+                    System.out.println(M.month_Literal);
+                    System.out.println(M.month_NumberOfDays);
+                }
+                //M.FEBRUARY.month_NumberOfDays = (short)28;
                 if (dayOfYear - M.month_NumberOfDays <= 0) {
                     newMonth = (short)(M.month_Number + 1);
                     break;
@@ -179,6 +185,9 @@ public class DateAD {
                 }
             }
         }
+        System.out.println(dayOfYear);
+        System.out.println(newMonth);
+        System.out.println(year);
         return new DateAD(dayOfYear, newMonth, year);
     }
     
