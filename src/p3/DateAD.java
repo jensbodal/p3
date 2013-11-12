@@ -1,13 +1,38 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * DateAD.java
  */
 package p3; //Jens
 import java.util.*;
 
 /**
- *
+ * <h1>DateAD</h1><br />
+ * 
+ * <b>Description</b><br />
+ * DateAD class which holds all the values for the associated DateAD object.
+ * <br />
+ * There are four ways to construct a DateAD object: <br />
+ * <ol>
+ * <li>No params results in the current date</li>
+ * <li>One param as a short sets the current date with the input param as the
+ * day of the month; if day is invalid then it is the current date.</li>
+ * <li>Two params as shorts sets the day then the month with the year being
+ * the current year. If any param is invalid then the date is the current 
+ * date</li>
+ * <li>Three params as shorts sets the date to the input as day, month, year.
+ * If any param is invalid then the date is the current date</li>
+ * </ol>
+ * <br />
+ * <i><b>Note</b></i><br />
+ * You can also construct a DateAD object by calling dateFromDayOfYear.  This
+ * takes in the day of the year and the year and returns a date if input is 
+ * valid; it sets the date to the current date otherwise.
+ * 
  * @author Jens Bodal
+ * @version 1.0
+ * 
+ * Compiler Java 1.7 OS: Windows 7, OSX Hardware: PC
+ * 
+ * November 11, 2013 JB Completed v1.0
  */
 public class DateAD {
     //CONSTANTS
@@ -77,7 +102,8 @@ public class DateAD {
     //returns a true if this day is the same day as the DateAD passed in as an argument; false otherwise.
     //returns a true if this day is the same day as the DateAD passed in as an argument; false otherwise.
     /**
-     *
+     * Compares DateAD object to given DateAD object and returns true if both
+     * are the same date
      * @param inputDate DateAD object for input
      * @return true if both dates refer to the exact same date
      */
@@ -128,7 +154,8 @@ public class DateAD {
      * year.
      * @param dayOfYear short number for day in year
      * @param year short number for year
-     * @return
+     * @return DateAD object based on day of year and year; returns the 
+     * current date if input is invalid
      */
     public DateAD dateFromDayOfYear(short dayOfYear, short year){
         short newMonth = 0;
@@ -158,56 +185,6 @@ public class DateAD {
         }
         return new DateAD(dayOfYear, newMonth, year);
     }
-    
-    /**
-     *
-     * @param inputDate DateAD object as input
-     * @return DateAD object that is one day ahead of input DateAD object
-     */
-    public DateAD getTomorrow(DateAD inputDate) {
-        short inputDayOfYear = inputDate.dayOfYear;
-        short inputYear = inputDate.year;
-        
-        if (inputDayOfYear == 365 || inputDayOfYear == 366) {
-            inputYear += 1;
-            inputDayOfYear = 1;
-        }
-        else {
-            inputDayOfYear += 1;
-        }
-
-        return dateFromDayOfYear(inputDayOfYear, inputYear);
-    }
-    
-    /**
-     *
-     * @param inputDate DateAD object as input
-     * @return DateAD object that is one day before of input DateAD object
-     */
-    public DateAD getYesterday(DateAD inputDate) {
-        short inputDayOfYear = inputDate.dayOfYear;
-        short inputYear = inputDate.year;
-        
-        if (inputDayOfYear == 1) {
-            inputYear -= 1;
-            if (!isLeapYear(inputYear)) {
-                inputDayOfYear = 365;
-            }
-            else {
-                inputDayOfYear = 366;
-            }
-        }
-        else {
-            inputDayOfYear -= 1;
-        }
-        
-        return dateFromDayOfYear(inputDayOfYear, inputYear);
-    }
-    /* Need to implement 4 constructors --  one default, and ones with 1 (month),
-     * 2 (month, year), and 3 (dayOfMonth, month, year) parameters.  
-     * All four constructors should begin by calling setCurrentDate(). 
-     * Any out-of-range parameter will cause the object to remain as the current date. 
-     */
     
     /**
      * Default constructor which returns the current date if no input is given
@@ -253,9 +230,54 @@ public class DateAD {
         setYear(year);
         setDayOfMonth(dayOfMonth);
     }
+
+    /**
+     * Returns the date after the input DateAD object
+     * @param inputDate DateAD object as input
+     * @return DateAD object that is one day ahead of input DateAD object
+     */
+    public DateAD getTomorrow(DateAD inputDate) {
+        short inputDayOfYear = inputDate.dayOfYear;
+        short inputYear = inputDate.year;
+        
+        if (inputDayOfYear == 365 || inputDayOfYear == 366) {
+            inputYear += 1;
+            inputDayOfYear = 1;
+        }
+        else {
+            inputDayOfYear += 1;
+        }
+
+        return dateFromDayOfYear(inputDayOfYear, inputYear);
+    }
     
     /**
-     * 
+     * Returns the date prior to the input DateAD object
+     * @param inputDate DateAD object as input
+     * @return DateAD object that is one day before of input DateAD object
+     */
+    public DateAD getYesterday(DateAD inputDate) {
+        short inputDayOfYear = inputDate.dayOfYear;
+        short inputYear = inputDate.year;
+        
+        if (inputDayOfYear == 1) {
+            inputYear -= 1;
+            if (!isLeapYear(inputYear)) {
+                inputDayOfYear = 365;
+            }
+            else {
+                inputDayOfYear = 366;
+            }
+        }
+        else {
+            inputDayOfYear -= 1;
+        }
+        
+        return dateFromDayOfYear(inputDayOfYear, inputYear);
+    }
+    
+    /**
+     * returns the day of the month as a short
      * @return the day of the month as a short
      */
     public short getDayOfMonth(){
@@ -263,7 +285,7 @@ public class DateAD {
     }
     
     /**
-     *
+     * returns the month as a short (January = 1)
      * @return the month as a short (January = 1)
      */
     public short getMonth(){
@@ -271,7 +293,7 @@ public class DateAD {
     }
     
     /**
-     *
+     * returns the year as a short
      * @return the year as a short
      */
     public short getYear(){

@@ -1,8 +1,22 @@
 package p3;
 
 /**
- *
+ * <h1>Date Driver</h1><br />
+ * 
+ * <b>Description</b><br />
+  * Takes in a date as day, month, year and returns information relating 
+ * to the input date and the current date.
+ * <br /><br />
+ * If the input date is invalid then the date will be set to the current date.
+ * <br /><br />
+ * This class is essentially a test class for the DateAD class
+ * 
  * @author Jens Bodal
+ * @version 1.0
+ * 
+ * Compiler Java 1.7 OS: Windows 7, OSX Hardware: PC
+ * 
+ * November 11, 2013 JB Completed v1.0
  */
 public class DateDriver {
 
