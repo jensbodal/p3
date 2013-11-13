@@ -102,7 +102,7 @@ public class DateAD {
     /**
      * Compares DateAD object to given DateAD object and returns true if both
      * are the same date
-     * @param inputDate DateAD object for input
+     * @param other Object for comparison, in this case will be DateAD
      * @return true if both dates refer to the exact same date
      */
     @Override
